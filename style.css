@@ -85,7 +85,8 @@ h2 {
 }
 .bkg-page {
     background-image: url("background01.jpg");
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
     background-color: rgba(0, 0, 0, 0.4);
     background-blend-mode: overlay;
     width: 100%;
