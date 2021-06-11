@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/slider/css/ion.rangeSlider.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Dias Consórcios</title>
+</head>
+<body>
+    <div class="bkg-page"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="logo-novo.png" alt="Dias Consórcios">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainnav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainnav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a href="#">Empresa</a></li>
+                    <li class="nav-item"><a href="#">Imóveis</a></li>
+                    <li class="nav-item"><a href="#">Veículos</a></li>
+                    <li class="nav-item"><a href="#">Investimentos</a></li>
+                    <li class="nav-item"><a href="#">Contemplados</a></li>
+                    <li class="nav-item"><a href="#">Blog</a></li>
+                    <li class="nav-item"><a href="#">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="main-section">
+            <h1>Invista em seus projetos de forma inteligente e <span>econômica</span></h1>
+            <div class="simulator-bdy">
+                <h2>Faça uma simulação</h2>
+                <div class="tipos-cons">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipo" id="imov" value="imovel" checked>
+                        <label class="form-check-label" for="imov">Imóvel</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipo" id="veic" value="veiculo">
+                        <label class="form-check-label" for="veic">Veículo</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipo" id="invest" value="investimento">
+                        <label class="form-check-label" for="invest">Investimento</label>
+                    </div>
+                </div>
+                <div class="slider-area">
+                    <label for="slider-input" class="form-label">Valor aproximado do crédito</label>
+                    <input type="text" class="js-range-slider" name="my_range" />
+                </div>
+                <div class="form">
+                    <div class="mb-3 row">
+                        <label for="nome" class="col-sm-2 col-form-label">Nome:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="nome" name="nome">
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="fone" class="col-sm-2 col-form-label">Telefone:</label>
+                        <div class="col-sm-10">
+                            <input type="tel" class="form-control" id="fone" name="fone" maxlength="15">
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2 sim-btn">
+                        <button type="button" class="btn btn-danger">SIMULAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/jquery-3.6.0.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/slider/js/ion.rangeSlider.min.js"></script>
+    <script src="assets/mask/src/jquery.mask.js"></script>
+    <script>
+        var custom_values = [30000, 40000, 50000, 75000, 100000, 100000, 150000, 200000, 250000, 300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000];
+        var my_from = custom_values.indexOf(40000);
+        var my_to = custom_values.indexOf(1000000);
+
+        $(".js-range-slider").ionRangeSlider({
+            from: 2,
+            grid: true,
+            values: [30000, 40000, 50000, 75000, 100000, 100000, 150000, 200000, 250000, 300000, 400000, 500000, 600000, 700000, 800000, 900000, 1000000]
+        });
+
+        var SPMaskBehavior = function (val) {
+            return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
+        }, spOptions = {
+            onKeyPress: function(val, e, field, options) {
+                field.mask(SPMaskBehavior.apply({}, arguments), options);
+            }
+        };
+        $('#fone').mask(SPMaskBehavior, spOptions);
+    </script>
+</body>
+</html>
